@@ -1,19 +1,28 @@
 <template>
   <div id="app">
     <h1>Generating github repositories created from {{generateLastMonthDate()}} to now.</h1>
-    <div v-for="(repo , index) in repos"  :key="index">
-        <h1>Repo Name: {{repo.full_name}}</h1>
-        <p>Repo Description:{{repo.description}}</p>
-        <h1>{{index}}</h1>
-        <h6>Staaaars: {{repo.stargazers_count}}</h6>
-        <h6>Isuuuwwwwz: {{repo.open_issues}}</h6>
-        <h4>OwOner: {{repo.owner.login}}</h4>
-        <h6>{{repo.created_at}}</h6>
-    </div><!-- repo -->
-    <infinite-loading :identifier="infiniteId" spinner="waveDots" @infinite="infiniteHandler">
-        <div slot="no-more">Wow, looks like you saw all repositories!</div>
-        <div slot="no-results">Nothing results to see here.</div>
-    </infinite-loading>
+    <div id="wrapper">
+        <div id="repos_Container">
+            <div v-for="(repo , index) in repos"  :key="index" class="repo">
+                <div class="gridcenter img"><img class="repo_Image" :src="repo.owner.avatar_url" alt=""></div>
+               <div class="gridcenter information">
+                   <div class="gridcenter repo_Name">{{repo.full_name}}</div>
+                   <div class="gridcenter repo_Description">{{repo.description}}</div>
+                   <div class="gridcenter repo_Stats">
+                       <div class="btns">
+                          <div class="gridcenter repo_Stars">stars:{{repo.stargazers_count}}</div>
+                          <div class="gridcenter repo_Issues">issues:{{repo.open_issues}}</div>
+                       </div>
+                       <div class="gridcenter repo_Created_atby">Submitted 30 days ago by {{repo.owner.login}}.</div>
+                   </div>
+               </div>
+            </div><!-- repo -->
+            <infinite-loading :identifier="infiniteId" spinner="waveDots" @infinite="infiniteHandler">
+                <div slot="no-more">Wow, looks like you saw all repositories!</div>
+                <div slot="no-results">Nothing results to see here.</div>
+            </infinite-loading>
+        </div>
+    </div>
   </div>
 </template>
 
@@ -71,3 +80,6 @@ export default {
   },
 };
 </script>
+<style>
+@import './assets/style/style.css';
+</style>

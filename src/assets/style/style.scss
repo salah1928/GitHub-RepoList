@@ -1,0 +1,93 @@
+*{
+    margin:0;
+    padding: 0;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    background-color: #232332;
+}
+.gridcenter{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+@media(max-width:600px){
+    #wrapper{
+        #repos_Container{
+            .repo{
+                grid-template-rows:1fr 2fr !important;
+                grid-template-columns:unset !important;
+                min-height: 50vh !important;
+                grid-column-gap: 25px !important;
+                .information{
+                    .repo_Stats{
+                        grid-template-columns: unset !important;
+                    }
+                }
+            }
+        }
+    }
+}
+#wrapper{
+    width: calc(100vw - 2rem);
+    max-width: 1000px;
+    margin: 5% auto;
+    #repos_Container{
+        width: 100%;
+        display: grid;
+        grid-template-rows: repeat(auto-fill,1fr);
+        grid-row-gap: 25px;
+        .repo{
+            min-height: 35vh;
+            display: grid;
+            grid-template-rows: 1fr;
+            grid-template-columns: 25% 1fr;
+            grid-column-gap: 25px;
+            .img{
+                .repo_Image{
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                }
+                
+            }
+            .information{
+                grid-template-rows: 2fr 2fr 60px;
+                justify-content: unset;
+                .repo_Name,.repo_Description,.repo_Stats{
+                    text-align: left;
+                    overflow-wrap: break-word;
+                    word-wrap: break-word;
+                    word-break: break-word;
+                }
+                .repo_Name{
+                    font-size: calc(1.5vw + 1.5rem);
+                    justify-self: start;
+                }
+                .repo_Description{
+                    max-width: 500px;
+                    justify-self: start;
+                }
+                .repo_Stats{
+                    height: 100%;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    grid-column-gap: 25px;
+                    .btns{
+                        display: flex;
+                        justify-content: space-between;
+                        height: 100%;
+                        width: 100%;
+                    }
+                    .repo_Stars,.repo_Issues{
+                        width: 40%;
+                        height: 100%;
+                        background-color: gray;
+                    }
+                }
+            }
+        }
+    }
+}
