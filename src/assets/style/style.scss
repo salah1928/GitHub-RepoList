@@ -5,30 +5,14 @@
 html{
     scroll-behavior: smooth;
 }
-body{
-    background-color: #232332;
-}
 .gridcenter{
     display: grid;
     justify-content: center;
     align-items: center;
 }
-@media(max-width:600px){
-    #wrapper{
-        #repos_Container{
-            .repo{
-                grid-template-rows:1fr 2fr !important;
-                grid-template-columns:unset !important;
-                min-height: 50vh !important;
-                grid-column-gap: 25px !important;
-                .information{
-                    .repo_Stats{
-                        grid-template-columns: unset !important;
-                    }
-                }
-            }
-        }
-    }
+#title{
+    height: 20vh;
+    font-family: 'Teko', sans-serif;
 }
 #wrapper{
     width: calc(100vw - 2rem);
@@ -40,18 +24,24 @@ body{
         grid-template-rows: repeat(auto-fill,1fr);
         grid-row-gap: 25px;
         .repo{
-            min-height: 35vh;
+            background-color: red;
+            background: #FFFFFF;
+            box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.25), -4px -4px 30px #FFFFFF;
+            border-radius: 50px 0px;
+            padding: 5%;
+            min-height: 20vh;
             display: grid;
             grid-template-rows: 1fr;
             grid-template-columns: 25% 1fr;
             grid-column-gap: 25px;
+            overflow: hidden;
             .img{
                 .repo_Image{
                     height: 100%;
                     width: 100%;
                     object-fit: cover;
+                    border-radius: 3px;
                 }
-                
             }
             .information{
                 grid-template-rows: 2fr 2fr 60px;
@@ -61,20 +51,24 @@ body{
                     overflow-wrap: break-word;
                     word-wrap: break-word;
                     word-break: break-word;
+                    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
                 }
                 .repo_Name{
                     font-size: calc(1.5vw + 1.5rem);
                     justify-self: start;
+                    font-family: 'Montserrat', sans-serif;
                 }
                 .repo_Description{
                     max-width: 500px;
                     justify-self: start;
+                    font-family: 'Inconsolata', monospace;
                 }
                 .repo_Stats{
                     height: 100%;
                     display: grid;
                     grid-template-columns: 1fr 1fr;
                     grid-column-gap: 25px;
+                    font-family: 'Roboto', sans-serif;
                     .btns{
                         display: flex;
                         justify-content: space-between;
@@ -82,9 +76,73 @@ body{
                         width: 100%;
                     }
                     .repo_Stars,.repo_Issues{
+                        background: #FFFFFF;
+                        box-shadow: -4px -4px 12px #FFFFFF, 4px 4px 12px rgba(0, 0, 0, 0.25);
+                        border-radius: 20px 0px 20px 0px;
                         width: 40%;
-                        height: 100%;
-                        background-color: gray;
+                        height: 80%;
+                        align-self: flex-end;
+                        position: relative;
+                        overflow: hidden;
+                        span{
+                            height: 100%;
+                            width: 100%;
+                            z-index: 6;
+                            display: flex;
+                            justify-content: space-around;
+                            align-items: center;
+                            transition: 400ms ease-in-out;
+                        }
+                        &:before{
+                            content: "";
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            bottom: 0;
+                            width: 10%;
+                            background-color:black;
+                            transition: 400ms ease-in-out;
+                            
+                        }
+                        &:hover{
+                            color: white;
+                            &:before{
+                                width: 100% ;
+                            }
+                        }
+                    }
+                    .repo_Created_atby{
+                        align-self: flex-end;
+                        justify-self: end;
+                        font-size: calc(0.25vw + 0.6rem);
+                    }
+                }
+            }
+        }
+    }
+}
+@media(max-width:600px){
+    #app{
+        #wrapper{
+            #repos_Container{
+                .repo{
+                    grid-template-rows:1fr 2fr;
+                    grid-template-columns:unset;
+                    min-height: 50vh;
+                    grid-column-gap: 25px;
+                    .img{
+                        .repo_Image{
+                            border-top-left-radius: 40px;
+                            overflow: hidden;
+                        }
+                    }
+                    .information{
+                        .repo_Stats{
+                            grid-template-columns: 1fr ;
+                        }
+                        .repo_Created_atby{
+                            justify-self: center;
+                        }
                     }
                 }
             }

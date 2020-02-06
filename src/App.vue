@@ -1,19 +1,19 @@
 <template>
   <div id="app">
-    <h1>Generating github repositories created from {{generateLastMonthDate()}} to now.</h1>
+    <div id="title" class="gridcenter"><h1>Generating github repositories created from {{generateLastMonthDate()}} to now.</h1></div>
     <div id="wrapper">
         <div id="repos_Container">
             <div v-for="(repo , index) in repos"  :key="index" class="repo">
                 <div class="gridcenter img"><img class="repo_Image" :src="repo.owner.avatar_url" alt=""></div>
-               <div class="gridcenter information">
+                <div class="gridcenter information">
                    <div class="gridcenter repo_Name">{{repo.full_name}}</div>
                    <div class="gridcenter repo_Description">{{repo.description}}</div>
                    <div class="gridcenter repo_Stats">
                        <div class="btns">
-                          <div class="gridcenter repo_Stars">stars:{{repo.stargazers_count}}</div>
-                          <div class="gridcenter repo_Issues">issues:{{repo.open_issues}}</div>
+                          <div class="gridcenter repo_Stars"><span><i class="fas fa-star"></i>{{repo.stargazers_count}}</span></div>
+                          <div class="gridcenter repo_Issues"><span><i class="fas fa-code-branch"></i>{{repo.open_issues}}</span></div>
                        </div>
-                       <div class="gridcenter repo_Created_atby">Submitted 30 days ago by {{repo.owner.login}}.</div>
+                       <div class="gridcenter repo_Created_atby">Submitted {{timeSince(repo.created_at)}} by {{repo.owner.login}}.</div>
                    </div>
                </div>
             </div><!-- repo -->
@@ -28,6 +28,7 @@
 
 <script>
 const axios = require('axios');
+const moment = require('moment');
 import InfiniteLoading from 'vue-infinite-loading';
 export default {
   components: {
@@ -41,11 +42,14 @@ export default {
     }
   },
   methods:{
+    timeSince(date){
+     return moment(new Date(date), "YYYYMMDD").fromNow();
+    },
     generateLastMonthDate(){
         let today = new Date();
         let last_month = new Date();
         last_month.setDate(today.getDate() - 30);   
-        let day = this.formatDate(last_month.getDate());
+        let day = this.formatDate(last_month.getDate() - 1);
         let month = this.formatDate(last_month.getMonth() + 1);
         let year = last_month.getFullYear();
       return `${year}-${month}-${day}`
@@ -54,7 +58,7 @@ export default {
     *  prepend 0 to number if it's single digit
     *  @returns {integer} 
     */
-    formatDate(num){
+    formatDate(num){                                        
       let formated_num = num > 10 ? num : '0' + num;
       return formated_num;
     },
