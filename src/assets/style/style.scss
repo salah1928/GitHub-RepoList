@@ -10,9 +10,60 @@ html{
     justify-content: center;
     align-items: center;
 }
+.flexcenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 #title{
     height: 20vh;
     font-family: 'Teko', sans-serif;
+    font-size: calc(0.5vw + 0.5rem);
+    h3{
+        justify-self: center;
+        width: 80%;
+        letter-spacing: 0.2rem;
+        color: rgba(128, 128, 128, 0.753);
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        font-size: calc(0.5vw + 1rem);
+        
+        #key{
+            cursor: pointer;
+            display: block;
+            border: 0.3px black solid;
+            border-radius: 2px;
+            position: relative;
+            width: 30px;
+            height: 30px;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            outline: gray 1px solid;
+            &:before{
+                content: '';
+                z-index: -1;
+                position: absolute;
+                width: 130%;
+                height: 120%;
+                top: 55%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: gray;
+                border-radius: 5px;
+                
+
+            }
+        }
+    }
+}
+.popup{
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    background-color: red;
 }
 #wrapper{
     width: calc(100vw - 2rem);
@@ -84,6 +135,7 @@ html{
                         align-self: flex-end;
                         position: relative;
                         overflow: hidden;
+                        cursor: pointer;
                         span{
                             height: 100%;
                             width: 100%;
@@ -120,6 +172,11 @@ html{
             }
         }
     }
+}
+.stars_stats,.issues_stats{
+    position: fixed;
+    display: none;
+   
 }
 @media(max-width:600px){
     #app{
