@@ -5,7 +5,7 @@
     </div>
     <div id="wrapper">
         <div id="repos_Container">
-            <Repo :repos="repos"></Repo>
+            <Repo v-for="(repo , index) in repos"  :key="index" :index="index" :repo="repo"></Repo>
             <infinite-loading ref="infiniteLoading" :identifier="infiniteId" spinner="waveDots" @infinite="infiniteHandler">
                 <div slot="no-more">Wow, looks like you saw all the repositories!</div>
                 <div slot="no-results">Nothing to see here.</div>

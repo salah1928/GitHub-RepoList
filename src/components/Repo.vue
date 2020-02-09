@@ -1,6 +1,6 @@
 <template>
     <div id="repos_Container">
-        <div v-for="(repo , index) in repos"  :key="index" class="repo">
+        <div class="repo">
             <div class="gridcenter img"><img class="repo_Image" :src="repo.owner.avatar_url" alt=""></div>
             <div class="gridcenter information">
                 <div class="gridcenter repo_Name">{{repo.name}}</div>
@@ -13,15 +13,15 @@
                     <div class="gridcenter repo_Created_atby">Submitted {{timeSince(repo.created_at)}} by {{repo.owner.login}}.</div>
                 </div>
             </div>
-        <Stars class=" stats stars_stats" :repo="repo"></Stars>
-        <Issue class=" stats issues_stats" :repo="repo"></Issue>
+        <Stars class="stats stars_stats" :repo="repo"></Stars>
+        <Issue class="stats issues_stats" :repo="repo"></Issue>
         </div>
     </div>
 </template>
 <script>
 const moment = require('moment');
 export default {
-    props:['repos'],
+    props:['repo','index'],
     methods:{
     timeSince(date){
         return moment(new Date(date), "YYYYMMDD").fromNow();
