@@ -1,13 +1,13 @@
 <template>
     <div>
-        <div v-if="issue.title" id="mousefollower2">
+        <div v-if="issue.title" class="content gridcenter" id="issues">
             <div class="title">{{issue.title}}</div>
             <div class="info">
-                <div class="status">{{issue.state}}</div>
+                <div class="gridcenter status">{{issue.state}}</div>
                 <div class="user">{{issue.user.login}} opened this {{timeSince(issue.created_at)}}. {{issue.comments}} comments</div>
             </div>
         </div>
-        <div v-else id="mousefollower2">
+        <div v-else id="issues">
             <div class="error">{{issue}}</div>
         </div>
     </div>
@@ -42,6 +42,3 @@ export default {
     }
 }
 </script>
-<style>
-@import '../assets/style/mousefollower.css';
-</style>

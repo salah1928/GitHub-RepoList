@@ -143,7 +143,9 @@ html {
           justify-content: unset;
 }
 
-#wrapper #repos_Container .repo .information .repo_Name, #wrapper #repos_Container .repo .information .repo_Description, #wrapper #repos_Container .repo .information .repo_Stats {
+#wrapper #repos_Container .repo .information .repo_Name,
+#wrapper #repos_Container .repo .information .repo_Description,
+#wrapper #repos_Container .repo .information .repo_Stats {
   text-align: left;
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -186,7 +188,8 @@ html {
   width: 100%;
 }
 
-#wrapper #repos_Container .repo .information .repo_Stats .repo_Stars, #wrapper #repos_Container .repo .information .repo_Stats .repo_Issues {
+#wrapper #repos_Container .repo .information .repo_Stats .repo_Stars,
+#wrapper #repos_Container .repo .information .repo_Stats .repo_Issues {
   background: #FFFFFF;
   -webkit-box-shadow: -4px -4px 12px #FFFFFF, 4px 4px 12px rgba(0, 0, 0, 0.25);
           box-shadow: -4px -4px 12px #FFFFFF, 4px 4px 12px rgba(0, 0, 0, 0.25);
@@ -200,7 +203,8 @@ html {
   cursor: pointer;
 }
 
-#wrapper #repos_Container .repo .information .repo_Stats .repo_Stars span, #wrapper #repos_Container .repo .information .repo_Stats .repo_Issues span {
+#wrapper #repos_Container .repo .information .repo_Stats .repo_Stars span,
+#wrapper #repos_Container .repo .information .repo_Stats .repo_Issues span {
   height: 100%;
   width: 100%;
   z-index: 6;
@@ -216,7 +220,8 @@ html {
   transition: 400ms ease-in-out;
 }
 
-#wrapper #repos_Container .repo .information .repo_Stats .repo_Stars:before, #wrapper #repos_Container .repo .information .repo_Stats .repo_Issues:before {
+#wrapper #repos_Container .repo .information .repo_Stats .repo_Stars:before,
+#wrapper #repos_Container .repo .information .repo_Stats .repo_Issues:before {
   content: "";
   position: absolute;
   left: 0;
@@ -228,11 +233,13 @@ html {
   transition: 400ms ease-in-out;
 }
 
-#wrapper #repos_Container .repo .information .repo_Stats .repo_Stars:hover, #wrapper #repos_Container .repo .information .repo_Stats .repo_Issues:hover {
+#wrapper #repos_Container .repo .information .repo_Stats .repo_Stars:hover,
+#wrapper #repos_Container .repo .information .repo_Stats .repo_Issues:hover {
   color: white;
 }
 
-#wrapper #repos_Container .repo .information .repo_Stats .repo_Stars:hover:before, #wrapper #repos_Container .repo .information .repo_Stats .repo_Issues:hover:before {
+#wrapper #repos_Container .repo .information .repo_Stats .repo_Stars:hover:before,
+#wrapper #repos_Container .repo .information .repo_Stats .repo_Issues:hover:before {
   width: 100%;
 }
 
@@ -244,9 +251,120 @@ html {
   font-size: calc(0.25vw + 0.6rem);
 }
 
-.stars_stats, .issues_stats {
+.stars_stats,
+.issues_stats {
+  z-index: 9;
   position: fixed;
   display: none;
+}
+
+.stars_stats .content,
+.issues_stats .content {
+  background-color: white;
+  -webkit-box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3), -4px -4px 12px white;
+          box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3), -4px -4px 12px white;
+  border-radius: 10px 0 10px 0;
+  font-family: 'Segoe UI', 'sans';
+}
+
+.stars_stats .content {
+  height: 200px;
+  width: 200px;
+  -ms-grid-rows: 15% 1fr;
+      grid-template-rows: 15% 1fr;
+}
+
+.stars_stats .content p {
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: calc(0.5vw + 0.5rem);
+}
+
+.stars_stats .content ul {
+  padding: 0;
+  height: 90%;
+  width: 80%;
+  margin: 0 auto;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: (1fr)[4];
+      grid-template-rows: repeat(4, 1fr);
+  grid-row-gap: 5px;
+}
+
+.stars_stats .content ul li {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 35% 1fr;
+      grid-template-columns: 35% 1fr;
+  overflow: hidden;
+}
+
+.stars_stats .content ul li img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.stars_stats .content ul li .name {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  font-size: calc(0.45vw + 0.45rem);
+}
+
+.issues_stats .content {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+  height: 100px;
+  width: 450px;
+}
+
+.issues_stats .content .title,
+.issues_stats .content .info {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.issues_stats .content .title {
+  font-size: calc(0.6vw + 0.6rem);
+}
+
+.issues_stats .content .info {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-columns: 15% 1fr;
+      grid-template-columns: 15% 1fr;
+  grid-column-gap: 5px;
+}
+
+.issues_stats .content .info .status {
+  background-color: #02b102;
+  color: white;
+  padding: 0.2rem;
+  line-height: 1.2rem;
+}
+
+.issues_stats .content .error {
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  position: absolute;
 }
 
 @media (max-width: 600px) {

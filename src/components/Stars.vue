@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div id="mousefollower">
+        <div class="content gridcenter" id="stars">
             <p>Some people who liked this:</p>
         <ul>
             <li v-for="gazer in stargazers" :key="gazer.id">
@@ -36,6 +36,3 @@ export default {
     }
 }
 </script>
-<style>
-@import '../assets/style/mousefollower.css';
-</style>

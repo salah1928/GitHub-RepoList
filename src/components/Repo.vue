@@ -1,5 +1,4 @@
 <template>
-    
     <div id="repos_Container">
         <div v-for="(repo , index) in repos"  :key="index" class="repo">
             <div class="gridcenter img"><img class="repo_Image" :src="repo.owner.avatar_url" alt=""></div>
@@ -30,13 +29,16 @@ export default {
     /* 
     * This is for an extra feature that i added
     */
-   showstats(menu, index, event){   
+   showstats(menu, index, event){
+       if(window.innerWidth < 600){
+           return
+       }
         this.hideall();
         let list = document.getElementsByClassName(`${menu}_stats`)[index]
         list.style.display = "block"
         window.onmousemove = (e)=>{
-        list.style.left = e.clientX - (list.style.width + 20) + 'px';
-        list.style.top = e.clientY - (list.style.height + 20) + 'px';
+        list.style.left = e.clientX - 220 + 'px';
+        list.style.top = e.clientY - 220 + 'px';
       }
     },
     hidestats(menu, index){
