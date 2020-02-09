@@ -46,16 +46,15 @@ html{
                 content: '';
                 z-index: -1;
                 position: absolute;
-                width: 130%;
+                width: 125%;
                 height: 120%;
                 top: 55%;
                 left: 50%;
                 transform: translate(-50%, -50%);
                 background-color: gray;
                 border-radius: 5px;
-                
-
             }
+            
         }
     }
 }

@@ -4,7 +4,7 @@
         <div v-for="(repo , index) in repos"  :key="index" class="repo">
             <div class="gridcenter img"><img class="repo_Image" :src="repo.owner.avatar_url" alt=""></div>
             <div class="gridcenter information">
-                <div class="gridcenter repo_Name">{{repo.full_name}}</div>
+                <div class="gridcenter repo_Name">{{repo.name}}</div>
                 <div class="gridcenter repo_Description">{{repo.description}}</div>
                 <div class="gridcenter repo_Stats">
                     <div class="btns">
@@ -14,8 +14,8 @@
                     <div class="gridcenter repo_Created_atby">Submitted {{timeSince(repo.created_at)}} by {{repo.owner.login}}.</div>
                 </div>
             </div>
-        <div class=" stats stars_stats">{{repo.full_name}}</div>
-        <div class=" stats issues_stats">{{repo.full_name}}</div>
+        <Stars class=" stats stars_stats" :repo="repo"></Stars>
+        <Issue class=" stats issues_stats" :repo="repo"></Issue>
         </div>
     </div>
 </template>
@@ -23,37 +23,31 @@
 const moment = require('moment');
 export default {
     props:['repos'],
-    data(){
-        return{
-
-        }
-    },
     methods:{
     timeSince(date){
         return moment(new Date(date), "YYYYMMDD").fromNow();
     },
-    showstats(menu, index, event){   
-
+    /* 
+    * This is for an extra feature that i added
+    */
+   showstats(menu, index, event){   
         this.hideall();
         let list = document.getElementsByClassName(`${menu}_stats`)[index]
-        let offset = 110
         list.style.display = "block"
         window.onmousemove = (e)=>{
-        list.style.left = e.clientX - offset + 'px';
-        list.style.top = e.clientY - offset + 'px';
+        list.style.left = e.clientX - (list.style.width + 20) + 'px';
+        list.style.top = e.clientY - (list.style.height + 20) + 'px';
       }
     },
-    hidestats(menu, index){   
+    hidestats(menu, index){
         document.getElementsByClassName(`${menu}_stats`)[index].style.display = 'none';
     },
     hideall(){
         document.getElementsByClassName('stars_stats').forEach(stat => {
-                stat.style.display = "none"
-                
+                stat.style.display = "none" 
         });
         document.getElementsByClassName('issues_stats').forEach(stat => {
-                stat.style.display = "none"
-                
+                stat.style.display = "none"   
         });
     }
     },
