@@ -37,8 +37,11 @@ export default {
         let list = document.getElementsByClassName(`${menu}_stats`)[index]
         list.style.display = "block"
         window.onmousemove = (e)=>{
-        list.style.left = e.clientX - 220 + 'px';
-        list.style.top = e.clientY - 220 + 'px';
+        let offsetX, offsetY;
+        offsetX = offsetY = menu == "stars" ? 220 : 150;
+        if(e.clientY < 200){ offsetY = -20 }
+        list.style.left = e.clientX - offsetX + 'px';
+        list.style.top = e.clientY - offsetY + 'px';
       }
     },
     hidestats(menu, index){
