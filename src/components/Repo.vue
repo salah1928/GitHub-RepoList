@@ -38,7 +38,7 @@ export default {
         list.style.display = "block"
         window.onmousemove = (e)=>{
         let offsetX, offsetY;
-        offsetX = offsetY = menu == "stars" ? 220 : 150;
+        offsetX = offsetY = menu == "stars" ? 220 : 165;
         if(e.clientY < 200){ offsetY = -20 }
         list.style.left = e.clientX - offsetX + 'px';
         list.style.top = e.clientY - offsetY + 'px';

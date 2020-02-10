@@ -24,8 +24,8 @@ export default {
         getStargazers(){
             axios.get(`${this.repo.stargazers_url}`)
             .then(res => {
-                let rand = Math.floor(Math.random() *this.stargazers.length)
-               for (let i = 0; i < 4; i++) {
+                let rand = Math.floor(Math.random() *res.data.length)
+                for (let i = 0; i < 4; i++) {
                    this.stargazers.push(res.data[rand + i])
                 }
             })

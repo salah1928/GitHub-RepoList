@@ -26,14 +26,13 @@ html {
 
     h3 {
         justify-self: center;
-        width: 80%;
+        width: 95%;
         letter-spacing: 0.2rem;
         color: rgba(128, 128, 128, 0.753);
         display: flex;
         justify-content: space-around;
         align-items: center;
         font-size: calc(0.5vw + 1rem);
-
         #key {
             cursor: pointer;
             display: block;
@@ -64,14 +63,6 @@ html {
         }
     }
 }
-
-.popup {
-    position: absolute;
-    height: 200px;
-    width: 200px;
-    background-color: red;
-}
-
 #wrapper {
     width: calc(100vw - 2rem);
     max-width: 1000px;
@@ -84,7 +75,6 @@ html {
         grid-row-gap: 25px;
 
         .repo {
-            background-color: red;
             background: #FFFFFF;
             box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.25), -4px -4px 30px #FFFFFF;
             border-radius: 50px 0px;
@@ -223,6 +213,8 @@ html {
             justify-self: center;
             align-items: center;
             font-size: calc(0.5vw + 0.5rem);
+            font-family: 'Teko', sans-serif;
+
         }
 
         ul {
@@ -260,7 +252,7 @@ html {
         justify-content: flex-start;
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr;
-        height: 100px;
+        min-height: 100px;
         width: 450px;
 
         .title,
@@ -268,9 +260,10 @@ html {
             width: 95%;
             margin: 0 auto;
         }
-
         .title {
             font-size: calc(0.6vw + 0.6rem);
+            font-family: 'Teko', sans-serif;
+
         }
 
         .info {
@@ -278,12 +271,12 @@ html {
             align-self: center;
             grid-template-columns: 15% 1fr;
             grid-column-gap: 5px;
-
             .status {
                 background-color: rgb(2, 177, 2);
                 color: white;
                 padding: 0.2rem;
                 line-height: 1.2rem;
+                max-height: 20px;
             }
 
         }
@@ -295,7 +288,18 @@ html {
         }
     }
 }
-
+#toTop{
+    position: fixed;
+    display: none;
+    height: 40px;
+    width: 40px;
+    right: 20px;
+    top: 100px;
+    border-radius: 20px;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+}
 @media(max-width:600px) {
     #app {
         #wrapper {

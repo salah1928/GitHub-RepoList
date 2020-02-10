@@ -12,7 +12,7 @@
             </infinite-loading>
         </div>
     </div>
-   
+    <a href="#title" class="gridcenter" id="toTop"><i class="fas fa-arrow-up"></i></a>
   </div>
 </template>
 
@@ -51,7 +51,7 @@ export default {
     *  @returns {integer} 
     */
     formatNumber(num){                                        
-      let formated_num = num > 10 ? num : '0' + num;
+      let formated_num = num >= 10 ? num : '0' + num;
       return formated_num;
     },
     infiniteHandler($state) {
@@ -73,8 +73,30 @@ export default {
         }
       );
     },
+    /* 
+    * This is for an extra feature that i added
+    */
+    getScrollPercent() {
+      let h = document.documentElement, 
+          b = document.body,
+          st = 'scrollTop',
+          sh = 'scrollHeight';
+      return (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100;
+}
   },
   created(){
+    /* 
+    * This is for some extra features that i added
+    */
+   window.addEventListener('scroll',()=>{
+   let toTop = document.getElementById('toTop')
+     if(this.getScrollPercent() > 20){
+       toTop.style.display = "grid"       
+     }else{
+       toTop.style.display = "none"
+     }
+     
+   })
     window.addEventListener('keydown', (e)=>{
       if (e.key == 'r'){
         this.reset()
