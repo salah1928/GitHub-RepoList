@@ -5,6 +5,10 @@
 This is a small webapp that lists the most starred Github repos that were created in the last 30 days.
 To create this app i used vuejs, simply because i'm more familiar with it, and axios, and moment, i used those libraries because they're simple and easy to use.
 
+## Live example
+
+https://toprepos.netlify.com
+
 ## Project setup
 ```
 npm install
